@@ -5,7 +5,7 @@ public class TennisGameImpl implements TennisGame {
     private final TennisPlayer player2 = new TennisPlayer();
 
     @Override
-    public void point(String playerName) throws IllegalArgumentException {
+    public void point(String playerName) {
 
         if(playerName == null || playerName.equals("")) {
             System.out.println("Expected: a non empty string literal\nActual: null or an empty string");
