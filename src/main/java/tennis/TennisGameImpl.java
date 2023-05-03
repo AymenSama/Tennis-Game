@@ -8,7 +8,8 @@ public class TennisGameImpl implements TennisGame {
     public void point(String playerName) throws IllegalArgumentException {
 
         if(playerName == null || playerName.equals("")) {
-            throw new IllegalArgumentException("Provided: null or an empty String\nExpected: a non empty String for a player name");
+            System.out.println("Expected: a non empty string literal\nActual: null or an empty string");
+            return;
         }
 
         if (player1.points.equals("Love")) {

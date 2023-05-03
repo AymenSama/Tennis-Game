@@ -123,7 +123,7 @@ public class TennisGameImplTest {
     }
 
     @Test
-    @DisplayName("Test that score doesn't change when giving in a third player.")
+    @DisplayName("Test that a third player does not get registered.")
     void testThirdPlayerIgnored() {
         game.point("Alfred");
         game.point("Alfred");
@@ -134,9 +134,11 @@ public class TennisGameImplTest {
     }
 
     @Test
-    @DisplayName("Test that providing null or an empty String throws an IllegalArgumentException.")
+    @DisplayName("Test that providing null or an empty String does not get registered.")
     void testNullOrEmptyString() {
-        assertThrows(IllegalArgumentException.class, () -> game.point(""));
-        assertThrows(IllegalArgumentException.class, () -> game.point(null));
+        game.point("Alfred");
+        game.point(null);
+        game.point("");
+        assertThat(game.score()).isEqualTo("Love-Fifteen");
     }
 }
