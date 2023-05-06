@@ -4,7 +4,6 @@ public interface TennisGame {
     /**
      * Erhöht den Punktestand des Players mit dem Namen playerName um 1
      * @param playerName Name eines der Spieler
-     * @throws IllegalArgumentException null oder ein leeres String übergeben
      */
     void point(String playerName);
 
