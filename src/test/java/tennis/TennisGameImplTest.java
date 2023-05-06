@@ -2,12 +2,11 @@ package tennis;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import static org.junit.jupiter.api.Assertions.assertThrows;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 public class TennisGameImplTest {
-    private final TennisGame game = new TennisGameImpl();
+    private final TennisGame game = new TennisGameImpl("Alfred", "Bruce");
     @Test
     @DisplayName("Test that the score is 'Love-All' when no points have been scored.")
     void testLoveAll() {
@@ -134,11 +133,10 @@ public class TennisGameImplTest {
     }
 
     @Test
-    @DisplayName("Test that providing null or an empty String does not get registered.")
-    void testNullOrEmptyString() {
+    @DisplayName("Test that providing null does not get registered.")
+    void testNull() {
         game.point("Alfred");
         game.point(null);
-        game.point("");
         assertThat(game.score()).isEqualTo("Love-Fifteen");
     }
 }

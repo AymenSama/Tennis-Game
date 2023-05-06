@@ -4,49 +4,35 @@ public class TennisGameImpl implements TennisGame {
     private final TennisPlayer player1 = new TennisPlayer();
     private final TennisPlayer player2 = new TennisPlayer();
 
+    public TennisGameImpl(String player1, String player2) {
+        this.player1.name = player1;
+        this.player2.name = player2;
+    }
+
     @Override
     public void point(String playerName) {
 
-        if(playerName == null || playerName.equals("")) {
-            System.out.println("Expected: a non empty string literal\nActual: null or an empty string");
-            return;
-        }
-
-        if (player1.points.equals("Love")) {
-            initPlayer(player1 ,playerName);
+        if(playerName == null) {
+            System.out.println("Expected: a string \nActual: null");
             return;
         }
 
         if (player1.name.equals(playerName)) {
             updatePoints(player1, player2);
-            return;
-        }
-
-        if (player2.points.equals("Love")) {
-            initPlayer(player2 ,playerName);
-            return;
-        }
-
-        if (player2.name.equals(playerName)) {
+        } else if (player2.name.equals(playerName)) {
             updatePoints(player2, player1);
         }
-
 
     }
 
     private void updatePoints(TennisPlayer player1, TennisPlayer player2) {
         switch (player1.points) {
+            case "Love" -> player1.points = "Fifteen";
             case "Fifteen" -> player1.points = "Thirty";
             case "Thirty" -> player1.points = "Fourty";
             case "Fourty" -> scoreWithFourtyPoints(player1, player2);
         }
     }
-
-    private void initPlayer(TennisPlayer player , String playerName) {
-        player.name = playerName;
-        player.points = "Fifteen";
-    }
-
     private void scoreWithFourtyPoints(TennisPlayer playerA, TennisPlayer playerB) {
         if(!playerB.points.equals("Fourty") || playerA.hasAdvantage) {
             playerA.winsGame = true;
