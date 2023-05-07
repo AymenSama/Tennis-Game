@@ -1,6 +1,13 @@
 package tennis;
 
 public class TennisGameImpl implements TennisGame {
+    private static class TennisPlayer {
+        String name;
+        String points = "Love";
+        boolean hasAdvantage;
+        boolean winsGame;
+    }
+
     private final TennisPlayer player1 = new TennisPlayer();
     private final TennisPlayer player2 = new TennisPlayer();
 
