@@ -1,6 +1,7 @@
 package tennis;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -133,10 +134,15 @@ public class TennisGameImplTest {
     }
 
     @Test
-    @DisplayName("Test that providing null does not get registered.")
+    @DisplayName("Test that providing null throws an IllegalArgumentException")
     void testNull() {
         game.point("Alfred");
-        game.point(null);
-        assertThat(game.score()).isEqualTo("Love-Fifteen");
+        assertThrows(IllegalArgumentException.class, () -> game.point(null));
+    }
+
+    @Test
+    @DisplayName("Test that providing an empty string throws IllegalArgumentException")
+    void testEmptyString(){
+        assertThrows(IllegalArgumentException.class, () -> game.point(""));
     }
 }

@@ -19,9 +19,8 @@ public class TennisGameImpl implements TennisGame {
     @Override
     public void point(String playerName) {
 
-        if(playerName == null) {
-            System.out.println("Expected: a string \nActual: null");
-            return;
+        if(playerName == null || playerName.equals("")) {
+            throw new IllegalArgumentException("Expected: a non empty string\nActual: empty string or null");
         }
 
         if (player1.name.equals(playerName)) {
