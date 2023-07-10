@@ -2,15 +2,15 @@ package tennis;
 
 public interface TennisGame {
     /**
-     * Erhöht den Punktestand des Players mit dem Namen playerName um 1
-     * @param playerName Name eines der Spieler
+     * Increases the score of the player with the name playerName by 1.
+     * @param playerName Name of one of the players.
      */
     void point(String playerName);
 
 
     /**
-     * @return Aktueller Spielstand nach
-     * @see <a href="https://de.wikipedia.org/wiki/Tennis#Gliederung_und_Z%C3%A4hlweise">Zählweise in einem Spiel</a>
+     * @return Current score according to
+     * @see <a href="https://en.wikipedia.org/wiki/Tennis_scoring_system">scoring system in a game</a>
      *
      */
     String score();
